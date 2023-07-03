@@ -33,4 +33,5 @@ public class Logistique implements Serializable {
     //Relation User
     @ManyToMany(mappedBy="Logistiques", cascade = CascadeType.ALL)
     private Set<User> users;
+
 }

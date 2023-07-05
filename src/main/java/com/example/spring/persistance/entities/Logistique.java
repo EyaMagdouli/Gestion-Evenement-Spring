@@ -24,11 +24,12 @@ public class Logistique implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_log")
     private Long idLog;
-    @Column(name="nom_log")
 
-    private String NomLog;
+    @Column(name="nom_log")
+    private String nomLog;
+
     @Column(name="type_log")
-    private String TypeLog;
+    private String typeLog;
 
     //Relation User
     @ManyToMany(mappedBy="Logistiques", cascade = CascadeType.ALL)

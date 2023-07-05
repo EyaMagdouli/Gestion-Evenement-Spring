@@ -28,7 +28,7 @@ public class Formation implements Serializable {
     @Column(name="date_form")
     private Date dateForm;
     @Column(name="type_form")
-    private String TypeForm;
+    private String typeForm;
 
     //Relation User
     @ManyToMany(mappedBy="Formations", cascade = CascadeType.ALL)

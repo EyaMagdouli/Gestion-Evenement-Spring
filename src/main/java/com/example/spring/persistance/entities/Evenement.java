@@ -30,7 +30,7 @@ public class Evenement implements Serializable{
     private Date dateEvent;
     @Column(name="type_event")
 
-    private String TypeEvent;
+    private String typeEvent;
     @Column(name="desc_event")
     private String description;
 

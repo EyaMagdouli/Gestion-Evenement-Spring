@@ -5,34 +5,38 @@ import com.example.spring.persistance.entities.Evenement;
 import com.example.spring.persistance.entities.Formation;
 import com.example.spring.service.interfaces.IFormationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Formation")
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/formation")
 public class FormationController {
 
     private final IFormationService formationService;
 
     @Autowired
-    public FormationController(IFormationService formationService){ this.formationService = formationService; }
+    public FormationController(@Qualifier("formationServiceIMPL") IFormationService formationService){
+        this.formationService = formationService;
+    }
 
-    @GetMapping
+    @GetMapping("/formations")
     public List<Formation> getAllFormations(){ return formationService.getAllFormations(); }
 
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/formations/{id}")
     public Formation getFormationById(@PathVariable Long id){ return formationService.getFormationById(id);  }
 
-    @PostMapping
+    @PostMapping("/addformation")
     public Formation createFormation(@RequestBody Formation formation) {
         return formationService.saveFormation(formation);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/editformation/{id}")
     public Formation updateFormation(@PathVariable Long id, @RequestBody Formation formation) {
         Optional<Formation> existingFormation = Optional.ofNullable(formationService.getFormationById(id));
         if (existingFormation.isPresent()) {
@@ -45,7 +49,7 @@ public class FormationController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteformation/{id}")
     public void deleteFormationById(@PathVariable Long id) {
         formationService.deleteFormationById(id);
     }

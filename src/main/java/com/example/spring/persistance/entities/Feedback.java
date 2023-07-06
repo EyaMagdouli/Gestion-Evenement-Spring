@@ -29,5 +29,6 @@ public class Feedback implements Serializable {
 
     //Relation user
     @ManyToOne(cascade = CascadeType.ALL)
-    User user;
+    User user;    
+    
 }

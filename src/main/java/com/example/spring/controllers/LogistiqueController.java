@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -43,6 +42,8 @@ public class LogistiqueController {
             Logistique updatedLogistique = existingLogistique.get();
             updatedLogistique.setNomLog(logistique.getNomLog());
             updatedLogistique.setTypeLog(logistique.getTypeLog());
+            updatedLogistique.setDisponibilite(logistique.isDisponibilite());
+            updatedLogistique.setStatusPercentage(logistique.getStatusPercentage());
             return logistiqueService.saveLogistique(updatedLogistique);
         } else {
             throw new RuntimeException("Logistique not found with ID: " + id);

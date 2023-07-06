@@ -17,6 +17,7 @@ public class LogistiqueServiceIMPL implements ILogistiqueService {
     public LogistiqueServiceIMPL(LogistiqueRepository logistiqueRepository) {
         this.logistiqueRepository = logistiqueRepository;
     }
+
     @Override
     public List<Logistique> getAllLogistiques() {
         return logistiqueRepository.findAll();
@@ -31,6 +32,7 @@ public class LogistiqueServiceIMPL implements ILogistiqueService {
             throw new RuntimeException("Logistique not found with ID: " + id);
         }
     }
+
     @Override
     public Logistique saveLogistique(Logistique logistique) {
         return logistiqueRepository.save(logistique);

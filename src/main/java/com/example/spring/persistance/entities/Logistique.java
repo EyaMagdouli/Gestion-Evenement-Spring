@@ -31,6 +31,12 @@ public class Logistique implements Serializable {
     @Column(name="type_log")
     private String typeLog;
 
+    @Column(name = "disponibilite")
+    private boolean disponibilite;
+
+    @Column(name = "status_percentage")
+    private int statusPercentage;
+
     //Relation User
     @ManyToMany(mappedBy="Logistiques", cascade = CascadeType.ALL)
     private Set<User> users;
